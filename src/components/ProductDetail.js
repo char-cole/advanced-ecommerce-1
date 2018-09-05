@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
+
 class ProductDetail extends Component {
 
     addToCart = () => {
         const item = this.props.product.name;
         this.props.updateCart(item);
-    }
+    };
 
     render(){
+        let stars = [];
+        for(let i = 0 ; i < this.props.product.rating ; i++){
+            stars.push(<span className="glyphicon glyphicon-star"/>)
+        }
         return (
             <div className="col-sm-4 col-lg-4 col-md-4">
                 <div className="thumbnail">
@@ -20,11 +25,7 @@ class ProductDetail extends Component {
                     <div className="ratings">
                         <p className="pull-right">{this.props.product.ratings}</p>
                         <p>
-                            <span className="glyphicon glyphicon-star"></span>
-                            <span className="glyphicon glyphicon-star"></span>
-                            <span className="glyphicon glyphicon-star"></span>
-                            <span className="glyphicon glyphicon-star"></span>
-                            <span className="glyphicon glyphicon-star"></span>
+                            {stars}
                         </p>
                     </div>
                     <div>
